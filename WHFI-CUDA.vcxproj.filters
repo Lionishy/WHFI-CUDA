@@ -3,4 +3,17 @@
   <ItemGroup>
     <CudaCompile Include="kernel.cu" />
   </ItemGroup>
+  <ItemGroup>
+    <Filter Include="WHFI">
+      <UniqueIdentifier>{8de85093-56f6-4f0c-b124-6a8a2b0da610}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DispersionRelation.cuh">
+      <Filter>WHFI</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalParameters.h">
+      <Filter>WHFI</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
