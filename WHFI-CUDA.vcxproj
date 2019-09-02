@@ -82,6 +82,10 @@
   <ItemGroup>
     <ClInclude Include="DispersionRelation.cuh" />
     <ClInclude Include="PhysicalParameters.h" />
+    <ClInclude Include="ZFunc.cuh" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

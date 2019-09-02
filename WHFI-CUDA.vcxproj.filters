@@ -7,6 +7,9 @@
     <Filter Include="WHFI">
       <UniqueIdentifier>{8de85093-56f6-4f0c-b124-6a8a2b0da610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ZFunc">
+      <UniqueIdentifier>{7b97a2f4-303d-437e-9b4b-278c56397b53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DispersionRelation.cuh">
@@ -15,5 +18,11 @@
     <ClInclude Include="PhysicalParameters.h">
       <Filter>WHFI</Filter>
     </ClInclude>
+    <ClInclude Include="ZFunc.cuh">
+      <Filter>ZFunc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
 </Project>
