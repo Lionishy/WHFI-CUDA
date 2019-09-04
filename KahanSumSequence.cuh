@@ -10,7 +10,7 @@ namespace iki { namespace math { namespace device {
 	template <typename T, typename Seq>
 	__device__ T kahan_summation_sequence(Seq seq, size_t seq_size) {
 		T s = T(0), c = T(0);
-		for (size_t counter = 0u; counter != seq_size; ++couter) {
+		for (size_t counter = 0u; counter != seq_size; ++counter) {
 			T y, t;
 			y = seq(counter,s) - c;
 			t = s + y;
