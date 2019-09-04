@@ -10,6 +10,15 @@
     <Filter Include="ZFunc">
       <UniqueIdentifier>{7b97a2f4-303d-437e-9b4b-278c56397b53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Table">
+      <UniqueIdentifier>{f868759e-07f3-4cdf-85c9-05f27ecd01e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{d9eb68dc-4580-46d2-bd94-b51ee97d1f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\device">
+      <UniqueIdentifier>{23658cf7-74db-4dd3-a940-2908563aa8fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DispersionRelation.cuh">
@@ -18,9 +27,14 @@
     <ClInclude Include="PhysicalParameters.h">
       <Filter>WHFI</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleTable.h" />
     <ClInclude Include="ZFunc.cuh">
       <Filter>ZFunc</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleTable.h">
+      <Filter>Table</Filter>
+    </ClInclude>
+    <ClInclude Include="KahanSumSequence.cuh">
+      <Filter>Math\device</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
