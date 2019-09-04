@@ -18,6 +18,7 @@
     <ClInclude Include="PhysicalParameters.h">
       <Filter>WHFI</Filter>
     </ClInclude>
+    <ClInclude Include="SimpleTable.h" />
     <ClInclude Include="ZFunc.cuh">
       <Filter>ZFunc</Filter>
     </ClInclude>
