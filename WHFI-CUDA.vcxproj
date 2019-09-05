@@ -84,6 +84,7 @@
     <ClInclude Include="DispersionRelation.cuh" />
     <ClInclude Include="KahanSumSequence.cuh" />
     <ClInclude Include="PhysicalParameters.h" />
+    <ClInclude Include="RungeKutta.cuh" />
     <ClInclude Include="SimpleTable.h" />
     <ClInclude Include="ZFunc.cuh" />
   </ItemGroup>

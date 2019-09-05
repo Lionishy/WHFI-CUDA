@@ -37,6 +37,9 @@
     <ClInclude Include="KahanSumSequence.cuh">
       <Filter>Math\device</Filter>
     </ClInclude>
+    <ClInclude Include="RungeKutta.cuh">
+      <Filter>Math\device</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
