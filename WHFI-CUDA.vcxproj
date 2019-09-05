@@ -79,6 +79,7 @@
   <ItemGroup>
     <CudaCompile Include="KahanSummationTest.cu" />
     <CudaCompile Include="kernel.cu" />
+    <CudaCompile Include="RungeKuttaTest.cu" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DispersionRelation.cuh" />

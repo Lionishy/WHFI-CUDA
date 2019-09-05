@@ -3,6 +3,7 @@
   <ItemGroup>
     <CudaCompile Include="kernel.cu" />
     <CudaCompile Include="KahanSummationTest.cu" />
+    <CudaCompile Include="RungeKuttaTest.cu" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="WHFI">
