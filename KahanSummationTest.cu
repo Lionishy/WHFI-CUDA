@@ -50,7 +50,6 @@ __global__ void test_summation_kernell_harmonic_series(T *res) {
 	*res = iki::math::device::kahan_summation_sequence<T, HarmonicSeries<T>>(HarmonicSeries<T>(), 100'000'000u);
 }
 
-
 template <typename T>
 __global__ void test_tabulator_kernell_zfunc(T *res, size_t size) {
 	*res = T(0.);
