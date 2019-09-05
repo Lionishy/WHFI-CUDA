@@ -4,10 +4,14 @@
 
 #include <stddef.h>
 
-#include <cuda.h>
 #include <cuda_runtime.h>
 	
-namespace iki {	namespace math { namespace cuda{
+namespace iki {	namespace math { namespace device {
+	template <typename T>
+	struct ZFuncODE {
+		__device__ T operator()(T x, T y) const { return -x * y - T(1.); }
+	};
+
 	template <typename T>
 	struct ZFuncTable {
 		size_t size = 0u;
