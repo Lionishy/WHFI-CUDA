@@ -7,7 +7,7 @@
 namespace iki { namespace math { namespace device { 
 	template <typename T, typename F_t>
 	struct Runge4th {
-		__device__ operator()(size_t x_cnt, T y) const {
+		__device__ T operator()(size_t x_cnt, T y) const {
 			T x = x0 + x_cnt * dx;
 			T k1 = F(x, y);
 			T k2 = F(x + dx / T(2.), y + k1 * dx / T(2.));
