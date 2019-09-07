@@ -42,8 +42,9 @@ std::istream &operator>>(std::istream &ascii_is, iki::UniformSpace<T, Dim> &spac
 template <typename T, size_t Dim, size_t Scale>
 std::istream &operator>>(std::istream &ascii_is, iki::UniformSimpleTable<T, Dim, Scale> &table) {
 	for (size_t collapsed_idx = 0u, end = iki::collapsed_size(&table.bounds); collapsed_idx != end; ++collapsed_idx) {
+		T skipped_arg;
 		for (size_t arg_idx = 0u; arg_idx != Dim; ++arg_idx)
-			ascii_is.ignore(std::numeric_limits<std::streamsize>::max(), ' ');
+			ascii_is >> skipped_arg;
 		for (size_t scl_idx = 0u; scl_idx != Scale; ++scl_idx)
 			ascii_is >> table.data[scl_idx+collapsed_idx*Scale];
 	}
