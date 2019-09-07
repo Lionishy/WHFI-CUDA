@@ -87,6 +87,7 @@
     <ClInclude Include="PhysicalParameters.h" />
     <ClInclude Include="RungeKutta.cuh" />
     <ClInclude Include="SimpleTable.h" />
+    <ClInclude Include="SimpleTableIO.h" />
     <ClInclude Include="ZFunc.cuh" />
   </ItemGroup>
   <ItemGroup>

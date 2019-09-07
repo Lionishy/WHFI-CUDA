@@ -41,6 +41,9 @@
     <ClInclude Include="RungeKutta.cuh">
       <Filter>Math\device</Filter>
     </ClInclude>
+    <ClInclude Include="SimpleTableIO.h">
+      <Filter>Table</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
