@@ -59,7 +59,7 @@ namespace iki {
 
 	template <size_t Dim>
 	void next_index(Index<Dim> *index, Bounds<Dim> const *bounds) {
-		bool carry_flat = true;
+		bool carry_flag = true;
 		for (size_t idx_idx = 0u; idx_idx != Dim; ++idx_idx)
 			if (carry_flag) {
 				index->components[idx_idx] += 1u;
@@ -92,7 +92,7 @@ namespace iki {
 	Argument<T, Dim> uniform_argument(Index<Dim> const *index, UniformSpace<T,Dim> const *space) {
 		Argument<T, Dim> expanded_argument;
 		for (size_t arg_idx = 0u; arg_idx != Dim; ++arg_idx)
-			expanded_argument[arg_idx] = space->axes[arg_idx].begin + space->axes[arg_idx].step * index->components[arg_idx];
+			expanded_argument.components[arg_idx] = space->axes[arg_idx].begin + space->axes[arg_idx].step * index->components[arg_idx];
 		return expanded_argument;
 	}
 

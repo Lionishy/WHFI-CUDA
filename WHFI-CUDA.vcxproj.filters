@@ -4,6 +4,7 @@
     <CudaCompile Include="kernel.cu" />
     <CudaCompile Include="KahanSummationTest.cu" />
     <CudaCompile Include="RungeKuttaTest.cu" />
+    <CudaCompile Include="ZFuncExportTest.cu" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="WHFI">
