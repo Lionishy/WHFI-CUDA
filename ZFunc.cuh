@@ -19,7 +19,7 @@ namespace iki {	namespace whfi { namespace device {
 		__device__ T operator()(T arg) {
 			T farg = fabs(arg);
 			auto idx = size_t(farg / zfunc_table.space.axes[0].step);
-			if ((idx + 1u) < collapsed_size(&table.bounds)) {
+			if ((idx + 1u) < collapsed_size(&zfunc_table.bounds)) {
 				return (arg > T(0.) ? T(1.) : T(-1.)) * ((zfunc_table.data[idx + 1u] - zfunc_table.data[idx]) / zfunc_table.space.axes[0].step * (farg - zfunc_table.space.axes[0].step * idx) + zfunc_table.data[idx]);
 			}
 			else { //asymptotic
