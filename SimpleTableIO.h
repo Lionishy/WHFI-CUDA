@@ -57,14 +57,14 @@ std::ostream& write_binary(std::ostream &binary_os, iki::UniformSpace<T,Dim> con
 		binary_os.write(reinterpret_cast<char const *>(&space.axes[axis_idx].begin), sizeof(T));
 		binary_os.write(reinterpret_cast<char const *>(&space.axes[axis_idx].step), sizeof(T));
 	}
-	return binary_os << flush;
+	return binary_os << std::flush;
 }
 
 template <typename T, size_t Dim, size_t Scale>
 std::ostream& write_binary(std::ostream &binary_os, iki::UniformSimpleTable<T, Dim, Scale> const &table) {
 	binary_os.write(reinterpret_cast<char const *>(&table.bounds), Dim * sizeof(size_t));
 	binary_os.write(reinterpret_cast<char const *>(table.data), iki::collapsed_size<Dim>(&table.bounds) * Scale * sizeof(T));
-	return binary_os << flush;
+	return binary_os << std::flush;
 }
 
 template <typename T, size_t Dim>
