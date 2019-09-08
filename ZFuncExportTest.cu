@@ -52,10 +52,17 @@ void zfunc_export_test() {
 			}
 			else {
 				ZFuncTable.data = hst_table_data.data();
+				{ //ascii export
+					ofstream ascii_os("./fZFunc.txt");
+					ascii_os.precision(8); ascii_os.setf(ios::fixed);
+					ascii_os << ZFuncTable << endl;
+				}
 
-				ofstream ascii_os("./fZFunc.txt");
-				ascii_os.precision(8); ascii_os.setf(ios::fixed);
-				ascii_os << ZFuncTable << endl;
+				{ //binary export
+					ofstream binary_os("./fZFunc.tbl",ios::binary);
+					write_binary(binary_os, ZFuncTable);
+				}
+
 			}
 		}
 		cudaFree(dev_table_data);
