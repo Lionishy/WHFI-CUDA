@@ -2,6 +2,8 @@
 #ifndef ZFunc_H
 #define ZFunc_H
 
+#include "SimpleTable.h"
+
 #include <stddef.h>
 
 #include <cuda_runtime.h>
@@ -13,15 +15,22 @@ namespace iki {	namespace whfi { namespace device {
 	};
 
 	template <typename T>
-	struct ZFuncTable {
-		size_t size = 0u;
-		T step = T(1);
-		T *values = NULL;
-	};
+	struct ZFunc {
+		__device__ T operator()(T arg) {
+			T farg = fabs(arg);
+			auto idx = size_t(farg / zfunc_table.space.axes[0].step);
+			if ((idx + 1u) < collapsed_size(&table.bounds)) {
+				return (arg > T(0.) ? T(1.) : T(-1.)) * ((zfunc_table.data[idx + 1u] - zfunc_table.data[idx]) / zfunc_table.space.axes[0].step * (farg - zfunc_table.space.axes[0].step * idx) + zfunc_table.data[idx]);
+			}
+			else { //asymptotic
+				T over = T(1.) / arg, square = over * over;
+				return -over * (T(1.) + square + T(3.) * square * square);
+			}
+		}
 
-	template <typename T>
-	__device__ T zfunc(ZFuncTable<T> const *table_ptr, T arg) {
-	}
+	private:
+		UniformSimpleTable<T, 1u, 1u> zfunc_table;
+	};
 } /* cuda */ } /* math */ } /* iki */
 
 #endif
