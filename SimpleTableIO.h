@@ -68,7 +68,7 @@ std::ostream& write_binary(std::ostream &binary_os, iki::UniformSimpleTable<T, D
 }
 
 template <typename T, size_t Dim>
-std::istream &read_binary(std::istream &binary_is, iki::UniformSpace<T, Dim> &space) {
+std::istream& read_binary(std::istream &binary_is, iki::UniformSpace<T, Dim> &space) {
 	for (size_t axis_idx = 0u; axis_idx != Dim; ++axis_idx) {
 		binary_is.read(reinterpret_cast<char *>(&space.axes[axis_idx].begin), sizeof(T));
 		binary_is.read(reinterpret_cast<char *>(&space.axes[axis_idx].step), sizeof(T));
@@ -77,7 +77,7 @@ std::istream &read_binary(std::istream &binary_is, iki::UniformSpace<T, Dim> &sp
 }
 
 template <typename T, size_t Dim, size_t Scale>
-std::istream &write_binary(std::istream &binary_is, iki::UniformSimpleTable<T, Dim, Scale> &table) {
+std::istream& read_binary(std::istream &binary_is, iki::UniformSimpleTable<T, Dim, Scale> &table) {
 	binary_is.read(reinterpret_cast<char *>(&table.bounds), Dim * sizeof(size_t));
 	binary_is.read(reinterpret_cast<char *>(table.data), iki::collapsed_size<Dim>(&table.bounds) * Scale * sizeof(T));
 	return binary_is;
