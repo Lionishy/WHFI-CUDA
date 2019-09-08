@@ -8,7 +8,7 @@
 #include <limits>
 
 template <typename T, size_t Dim>
-std::ostream &operator<<(std::ostream &ascii_os, iki::Argument<T, Dim> const &argument) {
+std::ostream& operator<<(std::ostream &ascii_os, iki::Argument<T, Dim> const &argument) {
 	for (size_t arg_idx = 0u; arg_idx != Dim; ++arg_idx)
 		ascii_os << argument.components[arg_idx] << ' ';
 	return ascii_os;
@@ -33,14 +33,14 @@ std::ostream& operator<<(std::ostream &ascii_os, iki::UniformSimpleTable<T, Dim,
 }
 
 template <typename T, size_t Dim>
-std::istream &operator>>(std::istream &ascii_is, iki::UniformSpace<T, Dim> &space) {
+std::istream& operator>>(std::istream &ascii_is, iki::UniformSpace<T, Dim> &space) {
 	for (size_t axis_idx = 0u; axis_idx != Dim; ++axis_idx)
 		ascii_is >> space.axes[axis_idx].begin >> space.axes[axis_idx].step;
 	return ascii_is;
 }
 
 template <typename T, size_t Dim, size_t Scale>
-std::istream &operator>>(std::istream &ascii_is, iki::UniformSimpleTable<T, Dim, Scale> &table) {
+std::istream& operator>>(std::istream &ascii_is, iki::UniformSimpleTable<T, Dim, Scale> &table) {
 	for (size_t collapsed_idx = 0u, end = iki::collapsed_size(&table.bounds); collapsed_idx != end; ++collapsed_idx) {
 		T skipped_arg;
 		for (size_t arg_idx = 0u; arg_idx != Dim; ++arg_idx)
@@ -49,6 +49,38 @@ std::istream &operator>>(std::istream &ascii_is, iki::UniformSimpleTable<T, Dim,
 			ascii_is >> table.data[scl_idx+collapsed_idx*Scale];
 	}
 	return ascii_is;
+}
+
+template <typename T, size_t Dim>
+std::ostream& write_binary(std::ostream &binary_os, iki::UniformSpace<T,Dim> const &space) {
+	for (size_t axis_idx = 0u; axis_idx != Dim; ++axis_idx) {
+		binary_os.write(reinterpret_cast<char const *>(&space.axes[axis_idx].begin), sizeof(T));
+		binary_os.write(reinterpret_cast<char const *>(&space.axes[axis_idx].step), sizeof(T));
+	}
+	return binary_os << flush;
+}
+
+template <typename T, size_t Dim, size_t Scale>
+std::ostream& write_binary(std::ostream &binary_os, iki::UniformSimpleTable<T, Dim, Scale> const &table) {
+	binary_os.write(reinterpret_cast<char const *>(&table.bounds), Dim * sizeof(size_t));
+	binary_os.write(reinterpret_cast<char const *>(table.data), iki::collapsed_size<Dim>(&table.bounds) * Scale * sizeof(T));
+	return binary_os << flush;
+}
+
+template <typename T, size_t Dim>
+std::istream &read_binary(std::istream &binary_is, iki::UniformSpace<T, Dim> &space) {
+	for (size_t axis_idx = 0u; axis_idx != Dim; ++axis_idx) {
+		binary_is.read(reinterpret_cast<char *>(&space.axes[axis_idx].begin), sizeof(T));
+		binary_is.read(reinterpret_cast<char *>(&space.axes[axis_idx].step), sizeof(T));
+	}
+	return binary_is;
+}
+
+template <typename T, size_t Dim, size_t Scale>
+std::istream &write_binary(std::istream &binary_is, iki::UniformSimpleTable<T, Dim, Scale> &table) {
+	binary_is.read(reinterpret_cast<char *>(&table.bounds), Dim * sizeof(size_t));
+	binary_is.read(reinterpret_cast<char *>(table.data), iki::collapsed_size<Dim>(&table.bounds) * Scale * sizeof(T));
+	return binary_is;
 }
 
 #endif /* SimpleTableIO_H */
