@@ -25,6 +25,16 @@ void simple_table_zfunc_test() {
 	}
 
 	{
+		ofstream binary_os("./fZFunc.tbl", ios::binary);
+		write_binary(binary_os, zfunc_table);
+	}
+
+	{
+		ifstream binary_is("./fZFunc.tbl", ios::binary);
+		read_binary(binary_is, zfunc_table);
+	}
+
+	{
 		ofstream ascii_os("./fZfunc2.txt");
 		ascii_os << setprecision(7) << fixed;
 		ascii_os << zfunc_table;
