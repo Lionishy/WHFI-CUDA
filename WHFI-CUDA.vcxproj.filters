@@ -63,6 +63,9 @@
     <ClInclude Include="ZFunc.h">
       <Filter>ZFunc</Filter>
     </ClInclude>
+    <ClInclude Include="DispersionRelationKGridSolver.h">
+      <Filter>WHFI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />

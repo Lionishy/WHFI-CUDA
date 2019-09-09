@@ -87,6 +87,7 @@
     <ClInclude Include="DeviceOptional.h" />
     <ClInclude Include="DispersionRelation.cuh" />
     <ClInclude Include="DispersionRelation.h" />
+    <ClInclude Include="DispersionRelationKGridSolver.h" />
     <ClInclude Include="ZFunc.h" />
     <ClInclude Include="KahanSumSequence.cuh" />
     <ClInclude Include="PhysicalParameters.h" />
