@@ -45,6 +45,12 @@
     <ClInclude Include="SimpleTableIO.h">
       <Filter>Table</Filter>
     </ClInclude>
+    <ClInclude Include="DispersionRelation.h">
+      <Filter>WHFI</Filter>
+    </ClInclude>
+    <ClInclude Include="ZFunc.h">
+      <Filter>ZFunc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
