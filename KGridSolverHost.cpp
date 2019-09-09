@@ -36,4 +36,16 @@ void KGridSolverHost() {
 	auto dispersion_relation = whfi::DispersionRelation(zfunc,params);
 
 	auto k_omega_vector = DRKGridSolve(1.e-4f, 0.7f, 1.e-4f, dispersion_relation);
+	{
+		ofstream ascii_out("./fKOmega.txt");
+		ascii_out.precision(7); ascii_out.setf(ios::fixed);
+		for (auto &[k, opt] : k_omega_vector) {
+			ascii_out << k << ' ';
+			if (opt)
+				ascii_out << *opt;
+			else
+				ascii_out << "nan";
+			ascii_out << endl;
+		}
+	}
 }

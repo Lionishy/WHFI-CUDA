@@ -13,7 +13,7 @@ namespace iki { namespace whfi {
 		auto step_solver_kernell = [&dr] (T k)->std::pair<T, std::optional<T>> { 
 			return {
 				k
-				, math::StepSolver([&dr,k] (T omega) { return dr(omega,k); })(T(0.),T(1.),T(1.e-4))
+				, math::make_step_solver<T>([&dr,k] (T omega) { return dr(omega,k); })(T(0.),T(1.),T(1.e-4))
 			};  
 		};
 
