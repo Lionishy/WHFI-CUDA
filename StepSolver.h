@@ -22,6 +22,9 @@ namespace iki { namespace math {
 	private:
 		F_t eqn;
 	};
+
+	template <typename T, typename F_t>
+	auto make_step_solver(F_t eqn) { return StepSolver<T, F_t>(eqn); }
 } /* math */ } /* iki */
 
 #endif
