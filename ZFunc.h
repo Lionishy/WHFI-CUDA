@@ -25,7 +25,6 @@ namespace iki {	namespace whfi {
 			}
 		}
 
-	private:
 		UniformSimpleTable<T, 1u, 1u> zfunc_table;
 	};
 } /* math */ } /* iki */
