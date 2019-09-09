@@ -26,7 +26,6 @@ namespace iki {	namespace whfi { namespace device {
 			}
 		}
 
-	private:
 		UniformSimpleTable<T, 1u, 1u> zfunc_table;
 	};
 } /* cuda */ } /* math */ } /* iki */
