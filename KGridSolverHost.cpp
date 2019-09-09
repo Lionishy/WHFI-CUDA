@@ -4,6 +4,7 @@
 #include "ZFunc.h"
 #include "PhysicalParameters.h"
 #include "DispersionRelation.h"
+#include "DispersionRelationKGridSolver.h"
 
 #include <vector>
 #include <fstream>
@@ -34,5 +35,5 @@ void KGridSolverHost() {
 	whfi::PhysicalParamenters<float> params = whfi::init_parameters(0.85f,1.f/0.85f,0.25f,-9.f);
 	auto dispersion_relation = whfi::DispersionRelation(zfunc,params);
 
-
+	auto k_omega_vector = DRKGridSolve(1.e-4f, 0.7f, 1.e-4f, dispersion_relation);
 }
