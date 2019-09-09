@@ -64,6 +64,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -82,11 +83,14 @@
     <CudaCompile Include="RungeKuttaTest.cu" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DeviceOptional.h" />
     <ClInclude Include="DispersionRelation.cuh" />
     <ClInclude Include="KahanSumSequence.cuh" />
     <ClInclude Include="PhysicalParameters.h" />
     <ClInclude Include="RungeKutta.cuh" />
     <ClInclude Include="SimpleTable.h" />
+    <ClInclude Include="StepSolver.cuh" />
+    <ClInclude Include="StepSolver.h" />
     <ClInclude Include="ZFunc.cuh" />
   </ItemGroup>
   <ItemGroup>
