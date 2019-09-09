@@ -22,6 +22,9 @@
     <Filter Include="Math\device">
       <UniqueIdentifier>{23658cf7-74db-4dd3-a940-2908563aa8fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Math\host">
+      <UniqueIdentifier>{6535de22-8ac4-44b5-aff9-f2c333fb0a6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DispersionRelation.cuh">
@@ -40,6 +43,15 @@
       <Filter>Math\device</Filter>
     </ClInclude>
     <ClInclude Include="RungeKutta.cuh">
+      <Filter>Math\device</Filter>
+    </ClInclude>
+    <ClInclude Include="StepSolver.h">
+      <Filter>Math\host</Filter>
+    </ClInclude>
+    <ClInclude Include="StepSolver.cuh">
+      <Filter>Math\device</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceOptional.h">
       <Filter>Math\device</Filter>
     </ClInclude>
     <ClInclude Include="SimpleTableIO.h">
