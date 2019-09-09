@@ -99,6 +99,7 @@
     <ClInclude Include="ZFunc.cuh" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="KGridSolverHost.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

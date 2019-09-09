@@ -69,5 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="KGridSolverHost.cpp" />
   </ItemGroup>
 </Project>
