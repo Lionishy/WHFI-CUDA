@@ -16,5 +16,13 @@ namespace iki { namespace whfi {
 				, StepSolver([&dr,k] (T omega) { return dr(omega,k); })(T(0.),T(1.),T(1.e-4)
 			};  
 		};
+
+		std::vector<std::pair<T, std::optional<T>>> result_vector;
+		size_t counter = 0u;
+		for (auto k = k_min; k <= k_max; k = k_min + ++counter * k_step) {
+			result_vector.push_back(step_solver_kernell(k));
+		}
+
+		return result_vector;
 	}
 } /* whfi */ } /* iki */
