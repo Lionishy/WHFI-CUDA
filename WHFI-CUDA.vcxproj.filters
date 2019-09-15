@@ -66,6 +66,9 @@
     <ClInclude Include="DispersionRelationKGridSolver.h">
       <Filter>WHFI</Filter>
     </ClInclude>
+    <ClInclude Include="DispersionRelationResonantVelocitySolver.h">
+      <Filter>WHFI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
