@@ -20,10 +20,10 @@ std::ostream& operator<<(std::ostream &ascii_os, iki::UniformSimpleTable<T, Dim,
 	using namespace iki;
 	
 	Index<Dim> expanded_index = first_index<Dim>();
-	for (auto it = table.data, end = table.data + collapsed_size<Dim>(&table.bounds); it != end;) {
+	for (auto it = table.data, end = table.data + collapsed_size<Dim>(&table.bounds)*Scale; it != end;) {
 		for (size_t arg_idx = 0u; arg_idx != Dim; ++arg_idx)
 			ascii_os << uniform_argument<T,Dim>(&expanded_index,&table.space) << ' ';
-		for (size_t scale_counter = 0u; scale_counter != Dim; ++scale_counter)
+		for (size_t scale_counter = 0u; scale_counter != Scale; ++scale_counter)
 			ascii_os << *it++ << ' ';
 		ascii_os << '\n';
 		next_index<Dim>(&expanded_index, &table.bounds);
@@ -60,9 +60,14 @@ std::ostream& write_binary(std::ostream &binary_os, iki::UniformSpace<T,Dim> con
 	return binary_os << std::flush;
 }
 
+template <size_t Dim>
+std::ostream& write_binary(std::ostream &binary_os, iki::Bounds<Dim> const &bounds) {
+	binary_os.write(reinterpret_cast<char const *>(&bounds.components[0]), Dim * sizeof(size_t));
+	return binary_os << std::flush;
+}
+
 template <typename T, size_t Dim, size_t Scale>
 std::ostream& write_binary(std::ostream &binary_os, iki::UniformSimpleTable<T, Dim, Scale> const &table) {
-	binary_os.write(reinterpret_cast<char const *>(&table.bounds), Dim * sizeof(size_t));
 	binary_os.write(reinterpret_cast<char const *>(table.data), iki::collapsed_size<Dim>(&table.bounds) * Scale * sizeof(T));
 	return binary_os << std::flush;
 }
@@ -76,9 +81,14 @@ std::istream& read_binary(std::istream &binary_is, iki::UniformSpace<T, Dim> &sp
 	return binary_is;
 }
 
+template <size_t Dim>
+std::istream& read_binary(std::istream &binary_is, iki::Bounds<Dim> &bounds) {
+	binary_is.read(reinterpret_cast<char *>(&bounds.components[0]), Dim * sizeof(size_t));
+	return binary_is;
+}
+
 template <typename T, size_t Dim, size_t Scale>
 std::istream& read_binary(std::istream &binary_is, iki::UniformSimpleTable<T, Dim, Scale> &table) {
-	binary_is.read(reinterpret_cast<char *>(&table.bounds), Dim * sizeof(size_t));
 	binary_is.read(reinterpret_cast<char *>(table.data), iki::collapsed_size<Dim>(&table.bounds) * Scale * sizeof(T));
 	return binary_is;
 }
