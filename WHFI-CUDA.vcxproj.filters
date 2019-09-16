@@ -73,5 +73,6 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="KGridSolverHost.cpp" />
+    <ClCompile Include="ResonantVelocitySolverHost.cpp" />
   </ItemGroup>
 </Project>

@@ -1,11 +1,11 @@
 #include <iostream>
 #include <exception>
 
-void KGridSolverHost();
+void ResonantVelocitySolverHost();
 int main() {
 	using namespace std;
 	try {
-		KGridSolverHost();
+		ResonantVelocitySolverHost();
 	}
 	catch (exception &ex) {
 		cerr << ex.what() << endl;
