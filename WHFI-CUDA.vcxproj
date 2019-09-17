@@ -89,6 +89,7 @@
     <ClInclude Include="DispersionRelation.h" />
     <ClInclude Include="DispersionRelationKGridSolver.h" />
     <ClInclude Include="DispersionRelationResonantVelocitySolver.h" />
+    <ClInclude Include="VparallGridCalculation.h" />
     <ClInclude Include="ZFunc.h" />
     <ClInclude Include="KahanSumSequence.cuh" />
     <ClInclude Include="PhysicalParameters.h" />
