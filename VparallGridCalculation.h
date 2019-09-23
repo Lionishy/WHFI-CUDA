@@ -47,6 +47,7 @@ namespace iki { namespace whfi {
 				if (result_array[0] < k_prev) break;
 				std::copy(std::begin(result_array), std::end(result_array), std::back_inserter(v_parall_data));
 				++counter;
+				k_prev = result_array[0];
 			}
 
 			UniformSimpleTable<T, 1u, 6u> v_parall_table;

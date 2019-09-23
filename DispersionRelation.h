@@ -47,7 +47,7 @@ namespace iki {	namespace whfi {
 				+ p.nc * (omega / (k * k * p.betta_root_c) + p.bulk_to_term_c) * Zc
 				- p.nc * (omega / (k * p.betta_c) - p.bulk_to_term_c) * (Zc * arg_c + T(1.)) * (omega - T(1.)) / (k * k * p.betta_root_c)
 				+ p.nh * (omega / (k * k * p.betta_root_h) + p.bulk_to_term_h) * Zh
-				- p.nh * (omega / (k * p.betta_h) - p.bulk_to_term_h) * (Zh * arg_h + T(1.)) * (omega - T(1.)) / (k * k * p.betta_root_h);
+				- p.nh * (omega / (k * p.betta_root_h) - p.bulk_to_term_h) * (Zh * arg_h + T(1.)) * (omega - T(1.)) / (k * k * p.betta_root_h);
 		}
 
 		DispersionRelationKDerivative(ZFunc_t Z, PhysicalParamenters<T> p) : Z(Z), p(p) { }

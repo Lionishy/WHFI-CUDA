@@ -15,7 +15,7 @@ namespace iki { namespace whfi {
 		std::optional<std::pair<T, T>> operator()(T resonant_v) {
 			auto Zc = Z(resonant_v - params.bulk_to_term_c)
 				, Zh = Z(resonant_v * std::sqrt(params.TcTh_ratio) - params.bulk_to_term_h);
-			auto dispersion_relation = [&params, resonant_v, Zc, Zh] (T omega) {
+			auto dispersion_relation = [resonant_v, Zc, Zh,this] (T omega) {
 				return T(1. / 1836.)
 					+ (omega - 1) * (omega - 1) / (resonant_v * params.betta_root_c) / (resonant_v * params.betta_root_c)
 					- params.nc * ((omega * resonant_v) / (omega - T(1.)) - params.bulk_to_term_c) * Zc
