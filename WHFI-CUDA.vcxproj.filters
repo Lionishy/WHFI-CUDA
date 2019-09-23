@@ -56,6 +56,9 @@
     <ClInclude Include="RungeKutta.h">
       <Filter>Math\host</Filter>
     </ClInclude>
+    <ClInclude Include="KahanSumSequence.h">
+      <Filter>Math\host</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />

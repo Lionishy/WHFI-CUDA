@@ -86,6 +86,7 @@
     <ClInclude Include="DeviceOptional.h" />
     <ClInclude Include="DispersionRelation.cuh" />
     <ClInclude Include="KahanSumSequence.cuh" />
+    <ClInclude Include="KahanSumSequence.h" />
     <ClInclude Include="PhysicalParameters.h" />
     <ClInclude Include="RungeKutta.cuh" />
     <ClInclude Include="RungeKutta.h" />

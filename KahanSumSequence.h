@@ -1,18 +1,16 @@
 #pragma once
-#ifndef KahanSumSequence_CH
-#define KahanSumSequence_CH
+#ifndef KahanSumSequence_H
+#define KahanSumSequence_H
 
-#include <cuda_runtime.h>
+#include <stddef.h>
 
-#include <cstddef>
-
-namespace iki { namespace math { namespace device { 
+namespace iki {	namespace math {
 	template <typename T, typename Seq>
-	__device__ T kahan_summation_sequence(Seq seq, size_t seq_size) {
+	T kahan_summation_sequence(Seq seq, size_t seq_size) {
 		T s = T(0), c = T(0);
 		for (size_t counter = 0u; counter != seq_size; ++counter) {
 			T y, t;
-			y = seq(counter,s) - c;
+			y = seq(counter, s) - c;
 			t = s + y;
 			c = (t - s) - y;
 			s = t;
@@ -21,12 +19,12 @@ namespace iki { namespace math { namespace device {
 	}
 
 	template <typename T, typename Seq>
-	__device__ void kahan_tabulator_sequence(Seq seq, size_t seq_size, T *begin, size_t loop_size = 1u) {
+	void kahan_tabulator_sequence(Seq seq, size_t seq_size, T *begin, size_t loop_size = 1u) {
 		T s = T(0), c = T(0);
 		for (size_t seq_counter = 0u; seq_counter != seq_size; ++seq_counter) {
 			for (size_t loop_count = 0u; loop_count != loop_size; ++loop_count) {
 				T y, t;
-				y = seq(seq_counter*loop_size + loop_count, s) - c;
+				y = seq(seq_counter * loop_size + loop_count, s) - c;
 				t = s + y;
 				c = (t - s) - y;
 				s = t;
@@ -34,6 +32,6 @@ namespace iki { namespace math { namespace device {
 			*begin++ = s;
 		}
 	}
-} /* device */ } /* math */ } /* iki */
+} /* math */ } /* iki */
 
-#endif /* KahanSumSequence_H */
+#endif
