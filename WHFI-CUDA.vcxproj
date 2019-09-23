@@ -98,6 +98,7 @@
     <ClInclude Include="StepSolver.h" />
     <ClInclude Include="SimpleTableIO.h" />
     <ClInclude Include="ZFunc.cuh" />
+    <ClInclude Include="ZFuncIO.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
