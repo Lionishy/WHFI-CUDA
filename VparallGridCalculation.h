@@ -3,6 +3,7 @@
 #define VparallGridCalculation_H
 
 #include "SimpleTable.h"
+#include "PhysicalParameters.h"
 #include "DispersionRelation.h"
 #include "DispersionRelationResonantVelocitySolver.h"
 
@@ -37,7 +38,7 @@ namespace iki { namespace whfi {
 				result_array[2] = omega_derive(k_omega_opt->second, k_omega_opt->first);
 				result_array[3] = k_derive(k_omega_opt->second, k_omega_opt->first);
 				result_array[4] = -result_array[3] / result_array[2];
-				result_array[5] = T(1. / std::fabs(v_resonant - result_array[4]));
+				result_array[5] = T(1. / std::fabs(v_resonant - result_array[4]/params.betta_root_c));
 				return result_array;
 			};
 
@@ -57,8 +58,9 @@ namespace iki { namespace whfi {
 			return v_parall_table;
 		}
 
-		VparallGridCalculator(ZFunc_t Z, PhysicalParamenters<T> params): rvsolver(Z,params), omega_derive(Z,params), k_derive(Z,params) { }
+		VparallGridCalculator(ZFunc_t Z, PhysicalParamenters<T> params): params(params), rvsolver(Z,params), omega_derive(Z,params), k_derive(Z,params) { }
 	private:
+		PhysicalParamenters<T> params;
 		ResonantVelocitySolver<T, ZFunc_t> rvsolver;
 		DispersionRelationOmegaDerivative<T, ZFunc_t> omega_derive;
 		DispersionRelationKDerivative<T, ZFunc_t> k_derive;
