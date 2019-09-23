@@ -72,6 +72,9 @@
     <ClInclude Include="ZFuncIO.h">
       <Filter>ZFunc</Filter>
     </ClInclude>
+    <ClInclude Include="KahanSumSequence.h">
+      <Filter>Math\host</Filter>
+    </ClInclude>
     <ClInclude Include="DispersionRelationResonantVelocitySolver.h">
       <Filter>WHFI</Filter>
     </ClInclude>

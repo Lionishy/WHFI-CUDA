@@ -92,6 +92,7 @@
     <ClInclude Include="VparallGridCalculation.h" />
     <ClInclude Include="ZFunc.h" />
     <ClInclude Include="KahanSumSequence.cuh" />
+    <ClInclude Include="KahanSumSequence.h" />
     <ClInclude Include="PhysicalParameters.h" />
     <ClInclude Include="RungeKutta.cuh" />
     <ClInclude Include="RungeKutta.h" />
