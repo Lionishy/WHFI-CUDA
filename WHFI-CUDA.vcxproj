@@ -101,6 +101,7 @@
     <ClInclude Include="ZFunc.cuh" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DiffusionCoefficientsKernellHost.cpp" />
     <ClCompile Include="KGridSolverHost.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ResonantVelocitySolverHost.cpp" />

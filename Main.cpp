@@ -1,11 +1,11 @@
 #include <iostream>
 #include <exception>
 
-void ResonantVelocitySolverHost();
+void DiffusionCoefficientsKernellHost();
 int main() {
 	using namespace std;
 	try {
-		ResonantVelocitySolverHost();
+		DiffusionCoefficientsKernellHost();
 	}
 	catch (exception &ex) {
 		cerr << ex.what() << endl;
