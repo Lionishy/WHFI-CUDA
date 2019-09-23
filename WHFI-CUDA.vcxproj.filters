@@ -72,6 +72,9 @@
     <ClInclude Include="ZFuncIO.h">
       <Filter>ZFunc</Filter>
     </ClInclude>
+    <ClInclude Include="KahanSumSequence.h">
+      <Filter>Math\host</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
