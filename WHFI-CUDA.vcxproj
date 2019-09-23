@@ -94,11 +94,13 @@
     <ClInclude Include="KahanSumSequence.cuh" />
     <ClInclude Include="PhysicalParameters.h" />
     <ClInclude Include="RungeKutta.cuh" />
+    <ClInclude Include="RungeKutta.h" />
     <ClInclude Include="SimpleTable.h" />
     <ClInclude Include="StepSolver.cuh" />
     <ClInclude Include="StepSolver.h" />
     <ClInclude Include="SimpleTableIO.h" />
     <ClInclude Include="ZFunc.cuh" />
+    <ClInclude Include="ZFuncIO.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DiffusionCoefficientsKernellHost.cpp" />

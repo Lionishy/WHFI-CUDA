@@ -1,6 +1,6 @@
 #pragma once
-#ifndef RungeKutta_H
-#define RungeKutta_H
+#ifndef RungeKutta_CH
+#define RungeKutta_CH
 
 #include <cuda_runtime.h>
 

@@ -54,6 +54,9 @@
     <ClInclude Include="DeviceOptional.h">
       <Filter>Math\device</Filter>
     </ClInclude>
+    <ClInclude Include="RungeKutta.h">
+      <Filter>Math\host</Filter>
+    </ClInclude>
     <ClInclude Include="SimpleTableIO.h">
       <Filter>Table</Filter>
     </ClInclude>
@@ -65,6 +68,9 @@
     </ClInclude>
     <ClInclude Include="DispersionRelationKGridSolver.h">
       <Filter>WHFI</Filter>
+    </ClInclude>
+    <ClInclude Include="ZFuncIO.h">
+      <Filter>ZFunc</Filter>
     </ClInclude>
     <ClInclude Include="DispersionRelationResonantVelocitySolver.h">
       <Filter>WHFI</Filter>
