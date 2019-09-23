@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <iomanip>
 
 void DiffusionCoefficientsKernellHost() {
@@ -20,7 +21,7 @@ void DiffusionCoefficientsKernellHost() {
 	}
 
 	/* Set physical parameters */
-	whfi::PhysicalParamenters<float> params = whfi::init_parameters(0.85f, 1.f / 0.85f, 0.25f, -9.f);
+	whfi::PhysicalParamenters<float> params = whfi::init_parameters(0.85f, 1.f / 0.85f, 0.25f, -11.f);
 
 	/* Set Grid Calculator */
 	auto vparall_grid_calculator = whfi::VparallGridCalculator(zfunc, params);
@@ -33,7 +34,10 @@ void DiffusionCoefficientsKernellHost() {
 	auto vparall_table = vparall_grid_calculator(vparall_axis, vparall_data);
 
 	{
-		ofstream ascii_os("./data/fVparallGrid.txt");
+		stringstream filename_ss;
+		filename_ss << setprecision(2) << fixed;
+		filename_ss << "./data/fVparallGrid" << "-" << params.nc << "-" << params.betta_c << "-" << params.TcTh_ratio << "-" << (params.bulk_to_alfven_c < 0 ? "m" : "") << std::fabs(params.bulk_to_alfven_c) << ".txt";
+		ofstream ascii_os(filename_ss.str());
 		ascii_os << setprecision(7) << fixed << vparall_table;
 	}
 }

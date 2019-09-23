@@ -22,8 +22,8 @@
 namespace iki { namespace whfi { 
 	template <typename T, typename ZFunc_t>
 	struct VparallGridCalculator {
-		UniformSimpleTable<T, 1u, 6u> operator()(UniformAxis<T> const &v_parall_axis, std::vector<T> & v_parall_data) {
-			auto v_parall_kernell = [v_parall_axis, this] (size_t counter)->std::array<T, 6u> {
+		UniformSimpleTable<T, 1u, 9u> operator()(UniformAxis<T> const &v_parall_axis, std::vector<T> & v_parall_data) {
+			auto v_parall_kernell = [v_parall_axis, this] (size_t counter)->std::array<T, 9u> {
 				T v_resonant = v_parall_axis.begin + v_parall_axis.step * counter;
 				auto k_omega_opt = rvsolver(v_resonant);
 				if (!k_omega_opt) {
@@ -32,13 +32,16 @@ namespace iki { namespace whfi {
 					throw std::runtime_error(error_text.str());
 				}
 
-				std::array<T, 6u> result_array;
-				result_array[0] = k_omega_opt->first;
-				result_array[1] = k_omega_opt->second;
-				result_array[2] = omega_derive(k_omega_opt->second, k_omega_opt->first);
-				result_array[3] = k_derive(k_omega_opt->second, k_omega_opt->first);
-				result_array[4] = -result_array[3] / result_array[2];
-				result_array[5] = T(1. / std::fabs(v_resonant - result_array[4]/params.betta_root_c));
+				std::array<T, 9u> result_array;
+				result_array[0] = k_omega_opt->first;                                                   //k
+				result_array[1] = k_omega_opt->second;                                                  //omega
+				result_array[2] = omega_derive(k_omega_opt->second, k_omega_opt->first);                //dL/dw
+				result_array[3] = k_derive(k_omega_opt->second, k_omega_opt->first);                    //dL/dk
+				result_array[4] = -result_array[3] / result_array[2];                                   //dw/dk
+				result_array[5] = T(3.1415926535) * T(1. / std::fabs(v_resonant - result_array[4]/params.betta_root_c));  //resonance term
+				result_array[6] = result_array[5] / (result_array[0] * result_array[0]) / (params.betta_root_c * params.betta_root_c * params.betta_root_c);   //Dmm
+				result_array[7] = result_array[5] / result_array[0] / (params.betta_c * T(0.5));        //Dmp
+				result_array[8] = result_array[5] / params.betta_root_c;                                //Dpp
 				return result_array;
 			};
 
@@ -51,7 +54,7 @@ namespace iki { namespace whfi {
 				k_prev = result_array[0];
 			}
 
-			UniformSimpleTable<T, 1u, 6u> v_parall_table;
+			UniformSimpleTable<T, 1u, 9u> v_parall_table;
 			v_parall_table.space.axes[0] = v_parall_axis;
 			v_parall_table.bounds.components[0] = counter;
 			v_parall_table.data = v_parall_data.data();
